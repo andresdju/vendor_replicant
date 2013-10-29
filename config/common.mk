@@ -154,6 +154,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/common
 
+ifeq ($(USE_OPENGL_RENDERER),true)
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/opengl
+else
+BOARD_EGL_CFG := vendor/replicant/prebuilt/softwaregl/configs/egl.cfg
+
+PRODUCT_PROPERTY_OVERRIDES += ro.softwaregl=true
+
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/softwaregl
+endif
+
 PRODUCT_VERSION_MAJOR = 4
 PRODUCT_VERSION_MINOR = 2
 PRODUCT_VERSION_MAINTENANCE = 2

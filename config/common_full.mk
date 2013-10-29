@@ -13,7 +13,7 @@ $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 # Include CM audio files
 include vendor/replicant/config/cm_audio.mk
 
-# Optional CM packages
+ifeq ($(USE_OPENGL_RENDERER),true)
 PRODUCT_PACKAGES += \
     HoloSpiralWallpaper \
     MagicSmokeWallpapers \
@@ -23,3 +23,4 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     VisualizationWallpapers \
     PhaseBeam
+endif
