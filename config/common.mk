@@ -1,6 +1,7 @@
 PRODUCT_BRAND ?= replicant
 
--include vendor/replicant-priv/keys.mk
+-include vendor/replicant-security/security.mk
+
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
@@ -24,6 +25,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+# Allow ADB root access
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.root_access=3
 endif
 
 # Copy over the changelog to the device
