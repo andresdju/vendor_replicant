@@ -9,47 +9,47 @@ Nexus S (I902x):
 * 2D graphics working (slow)
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working
 
 Galaxy S (I9000):
 * 2D graphics working (slow)
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working
 
-Galaxy S2 (I9100):
+Galaxy S 2 (I9100):
 * 2D graphics working (fast)
 * Sound working, except Bluetooth and USB audio
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working
 
 Galaxy Note (N7000):
 * 2D graphics working
 * Sound working, except Bluetooth and USB audio
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working
 
 Galaxy Nexus (I9250):
 * 2D graphics working
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
@@ -58,39 +58,39 @@ Galaxy Tab 2 7.0 (P31xx):
 * 2D graphics working (fast)
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
 
 Galaxy Tab 2 10.1 (P51xx):
-* 2D graphics working
+* 2D graphics working (slow)
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
 
-Galaxy S3 (I9300):
+Galaxy S 3 (I9300):
 * 2D graphics working
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working (back)
 
 Galaxy Note 2 (N7100):
 * 2D graphics working
 * Sound working
 * Telephony working
-* 3G Data working
+* Mobile data working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth not working without non-free firmwares
 * Sensors working
-* Camera workig
+* Camera working (back)
 
 CyanogenMod
 ===============
