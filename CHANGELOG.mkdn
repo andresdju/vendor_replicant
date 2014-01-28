@@ -6,7 +6,7 @@ Replicant
 Initial Replicant 4.2 release
 
 Nexus S (I902x):
-* 2D graphics working (slow)
+* 2D graphics working, slow
 * Sound working
 * Telephony working
 * Mobile data working
@@ -16,7 +16,7 @@ Nexus S (I902x):
 * Camera working
 
 Galaxy S (I9000):
-* 2D graphics working (slow)
+* 2D graphics working, slow
 * Sound working
 * Telephony working
 * Mobile data working
@@ -26,7 +26,7 @@ Galaxy S (I9000):
 * Camera working
 
 Galaxy S 2 (I9100):
-* 2D graphics working (fast)
+* 2D graphics working, fast
 * Sound working, except Bluetooth and USB audio
 * Telephony working
 * Mobile data working
@@ -55,7 +55,7 @@ Galaxy Nexus (I9250):
 * Sensors working
 
 Galaxy Tab 2 7.0 (P31xx):
-* 2D graphics working (fast)
+* 2D graphics working, fast
 * Sound working
 * Telephony working
 * Mobile data working
@@ -64,7 +64,7 @@ Galaxy Tab 2 7.0 (P31xx):
 * Sensors working
 
 Galaxy Tab 2 10.1 (P51xx):
-* 2D graphics working (slow)
+* 2D graphics working, slow
 * Sound working
 * Telephony working
 * Mobile data working
