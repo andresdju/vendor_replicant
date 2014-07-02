@@ -1,6 +1,8 @@
 
 BASEDIR=`dirname $0`
 
+mkdir -p $BASEDIR/prebuilt/common/apps/
+
 # Get FDroid
 curl -L -o $BASEDIR/prebuilt/common/apps/FDroid.apk -O -L http://f-droid.org/FDroid.apk
 
