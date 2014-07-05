@@ -1,6 +1,43 @@
 Replicant
 =========
 
+### Replicant 4.2 0002 images
+
+Common:
+* Better handling of missing NFC firmware
+* Replicant bootanimations with new typeface
+* Hide the homescreen search bar by default
+* Replicant-approved websites in the default bookmarks
+* Possibility to disable the search engine and DuckDuckGo for all!
+
+Galaxy S 2 (I9100), Galaxy Note (N7000):
+* Scale camera thumbnail before converting to jpeg, when necessary
+* Handle camera preview size changen, disable unsupported sizes and other fixes
+* Home key to select item in recovery
+* Accelerometer sensor enable fix
+
+Galaxy S (I9000):
+* Read and write modem data in proper buffer-sized chunks
+
+Galaxy Nexus (I9250):
+* Properly handle missing Ducati firmware
+
+Galaxy Tab 2 7.0 (P31xx):
+* Correct rotation for Wi-Fi-only version
+
+Galaxy Tab 2 10.1 (P51xx):
+* In-call audio routing fix (especially headphones microphone)
+
+Galaxy S 3 (I9300), Galaxy Note 2 (N7100):
+* Handle camera preview size or format change
+
+Goldelico GTA04:
+* Initial Replicant 4.2 release
+* 2D graphics working
+* Audio working
+* Wi-Fi not working without non-free firmwares
+* Bluetooth broken
+
 ### Replicant 4.2 0001 images
 
 Initial Replicant 4.2 release
