@@ -31,12 +31,13 @@ Galaxy Tab 2 10.1 (P51xx):
 Galaxy S 3 (I9300), Galaxy Note 2 (N7100):
 * Handle camera preview size or format change
 
-Goldelico GTA04:
+GTA04:
 * Initial Replicant 4.2 release
 * 2D graphics working
 * Audio working
 * Wi-Fi not working without non-free firmwares
 * Bluetooth broken
+* GPS working
 
 ### Replicant 4.2 0001 images
 
