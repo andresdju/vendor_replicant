@@ -1,6 +1,35 @@
 Replicant
 =========
 
+### Replicant 4.2 0003 images
+
+Common:
+* CVE-2014-3153 Linux security fix
+* CVE-2014-3566 Apache-http security fix
+* CVE-2014-6041 Webkit security fix
+* CVE-2014-6271 Bash security fix
+* CVE-2014-6277 Bash security fix
+* CVE-2014-6278 Bash security fix
+* CVE-2014-7169 Bash security fix
+* CVE-2014-7186 Bash security fix
+* CVE-2014-7187 Bash security fix
+* Master Key security fix
+* Fake ID security fix
+* Preferred Network Offload privacy fix
+* CaCert Root CA and Class 3 CA
+* NFC firmware data load from a static file instead of a library
+* NFC power off only when initialization failed
+* Additional Wi-Fi MAC addresses for murata
+* Samsung-RIL and libsamsung-ipc rewrite: harder, better, probably not faster but definitely stronger
+
+Galaxy Note 2 (N7100):
+* Magnetic field sensor data interpretation correction
+
+GTA04:
+* Proper indications on boot failures
+* Lower earpiece playback volume
+* Installation script various fixes
+
 ### Replicant 4.2 0002 images
 
 Common:
