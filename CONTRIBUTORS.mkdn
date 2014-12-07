@@ -1,8 +1,7 @@
 Replicant
 =========
 
-The full list of contributors to the Replicant code base must be very long since it is based on CyanogenMod and AOSP, which are both using third party projects.
-However, a (non-exhaustive) list of people who specifically contribute(d) to Replicant is available at: <http://redmine.replicant.us/projects/replicant/wiki/People>
+A non-exhaustive list of people involved in Replicant is available at: http://redmine.replicant.us/projects/replicant/wiki/People
 
 CyanogenMod
 ===========
