@@ -7,5 +7,5 @@ mkdir -p $BASEDIR/prebuilt/common/apps/
 curl -L -o $BASEDIR/prebuilt/common/apps/FDroid.apk -O -L http://f-droid.org/FDroid.apk
 
 # Get Android Terminal Emulator
-curl -L -o $BASEDIR/prebuilt/common/apps/Term.apk -O -L http://f-droid.org/repo/jackpal.androidterm_63.apk
+curl -L -o $BASEDIR/prebuilt/common/apps/Term.apk -O -L http://f-droid.org/repo/jackpal.androidterm_64.apk
 unzip -o -d $BASEDIR/prebuilt/common/apps/ $BASEDIR/prebuilt/common/apps/Term.apk lib/armeabi/libjackpal-androidterm4.so
