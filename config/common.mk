@@ -65,8 +65,9 @@ PRODUCT_COPY_FILES += \
 # Prebuilt apps
 PRODUCT_COPY_FILES +=  \
     vendor/replicant/prebuilt/common/apps/FDroid.apk:system/app/FDroid.apk \
-    vendor/replicant/prebuilt/common/apps/Term.apk:system/app/Term.apk \
-    vendor/replicant/prebuilt/common/apps/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/replicant/prebuilt/common/apps/TerminalEmulator.apk:system/app/TerminalEmulator.apk \
+    vendor/replicant/prebuilt/common/apps/lib/armeabi/libjackpal-termexec2.so:system/lib/libjackpal-termexec2.so \
+    vendor/replicant/prebuilt/common/apps/lib/armeabi/libjackpal-androidterm5.so:system/lib/libjackpal-androidterm5.so
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \

@@ -1,11 +1,12 @@
+#!/bin/sh
 
-BASEDIR=`dirname $0`
+BASEDIR=$( dirname $0 )
 
 mkdir -p $BASEDIR/prebuilt/common/apps/
 
-# Get FDroid
+# F-Droid
 curl -L -o $BASEDIR/prebuilt/common/apps/FDroid.apk -O -L http://f-droid.org/FDroid.apk
 
-# Get Android Terminal Emulator
-curl -L -o $BASEDIR/prebuilt/common/apps/Term.apk -O -L http://f-droid.org/repo/jackpal.androidterm_64.apk
-unzip -o -d $BASEDIR/prebuilt/common/apps/ $BASEDIR/prebuilt/common/apps/Term.apk lib/armeabi/libjackpal-androidterm4.so
+# Terminal Emulator
+curl -L -o $BASEDIR/prebuilt/common/apps/TerminalEmulator.apk -O -L http://f-droid.org/repo/jackpal.androidterm_71.apk
+unzip -o -d $BASEDIR/prebuilt/common/apps/ $BASEDIR/prebuilt/common/apps/TerminalEmulator.apk lib/armeabi/libjackpal-termexec2.so lib/armeabi/libjackpal-androidterm5.so
