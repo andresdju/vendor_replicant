@@ -1,6 +1,19 @@
 Replicant
 =========
 
+### Replicant 4.2 0004 images
+
+Common:
+* CVE-2015-1474 native framework security fix
+* CVE-2015-3842 av framework security fix
+* Installer Hijacking vulnerability fix
+* Stagefright vulnerability fix (including CVE-2015-3864)
+* Various other backported security fixes
+* Process thrash killing battery fix
+
+Galaxy S (I9000):
+* Mobile data activation fix
+
 ### Replicant 4.2 0003 images
 
 Common:
