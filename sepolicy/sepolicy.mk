@@ -3,8 +3,5 @@
 # inherit from CM
 #
 
-BOARD_SEPOLICY_DIRS := \
+BOARD_SEPOLICY_DIRS += \
     vendor/replicant/sepolicy
-
-BOARD_SEPOLICY_UNION := \
-    mac_permissions.xml

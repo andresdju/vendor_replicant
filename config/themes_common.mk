@@ -1,8 +1,8 @@
-# T-Mobile theme engine
+# Theme engine
 PRODUCT_PACKAGES += \
-       ThemeManager \
-       ThemeChooser \
-       com.tmobile.themes
+    aapt \
+    ThemeChooser \
+    ThemesProvider
 
 PRODUCT_COPY_FILES += \
-       vendor/replicant/config/permissions/com.tmobile.software.themes.xml:system/etc/permissions/com.tmobile.software.themes.xml
+    vendor/replicant/config/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml

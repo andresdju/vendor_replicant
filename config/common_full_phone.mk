@@ -1,20 +1,21 @@
 # Inherit common CM stuff
 $(call inherit-product, vendor/replicant/config/common_full.mk)
 
-# Default ringtone
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Orion.ogg \
-    ro.config.notification_sound=Argon.ogg \
-    ro.config.alarm_alert=Hassium.ogg
-
+# Required CM packages
 PRODUCT_PACKAGES += \
-  Mms
+    LatinIME
 
-# BT config
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.conf:system/etc/bluetooth/main.conf
+# Include CM LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/dictionaries
 
-ifeq ($(TARGET_BOOTANIMATION_NAME),)
+# Default notification/alarm sounds
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.notification_sound=Argon.ogg \
+    ro.config.alarm_alert=Helium.ogg
+
+ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
     PRODUCT_COPY_FILES += \
         vendor/replicant/prebuilt/common/bootanimation/vertical-480x800.zip:system/media/bootanimation.zip
 endif
+
+$(call inherit-product, vendor/replicant/config/telephony.mk)
