@@ -223,90 +223,42 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
-    procrank \
-    su
+    procrank
 endif
+
+# Superuser
+PRODUCT_PACKAGES += \
+    su
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/common
 
-PRODUCT_VERSION_MAJOR = 13
+ifeq ($(USE_OPENGL_RENDERER),true)
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/opengl
+else
+BOARD_EGL_CFG := vendor/replicant/prebuilt/softwaregl/configs/egl.cfg
+
+PRODUCT_PROPERTY_OVERRIDES += ro.softwaregl=1
+
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/softwaregl
+endif
+
+PRODUCT_VERSION_MAJOR = 6
 PRODUCT_VERSION_MINOR = 0
-PRODUCT_VERSION_MAINTENANCE = 0-RC0
+PRODUCT_VERSION_MAINTENANCE = 1
 
-# Set CM_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
-
-ifndef CM_BUILDTYPE
-    ifdef RELEASE_TYPE
-        # Starting with "CM_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^CM_||g')
-        CM_BUILDTYPE := $(RELEASE_TYPE)
-    endif
-endif
-
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
-    CM_BUILDTYPE :=
-endif
-
-ifdef CM_BUILDTYPE
-    ifneq ($(CM_BUILDTYPE), SNAPSHOT)
-        ifdef CM_EXTRAVERSION
-            # Force build type to EXPERIMENTAL
-            CM_BUILDTYPE := EXPERIMENTAL
-            # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-        endif
-    else
-        ifndef CM_EXTRAVERSION
-            # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
-            CM_BUILDTYPE := EXPERIMENTAL
-        else
-            # Remove leading dash from CM_EXTRAVERSION
-            CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to CM_EXTRAVERSION
-            CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-        endif
-    endif
-else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
-endif
-
-ifeq ($(CM_BUILDTYPE), UNOFFICIAL)
-    ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        CM_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
-    endif
-endif
-
-ifeq ($(CM_BUILDTYPE), RELEASE)
-    ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
-    else
-        ifeq ($(TARGET_BUILD_VARIANT),user)
-            CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(CM_BUILD)
-        else
-            CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
-        endif
-    endif
-else
-    CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)$(CM_EXTRAVERSION)-$(CM_BUILD)
-endif
+REPLICANT_VERSION := "replicant-6.0"
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cm.version=$(CM_VERSION) \
-  ro.cm.releasetype=$(CM_BUILDTYPE) \
-  ro.modversion=$(CM_VERSION) \
-  ro.cmlegal.url=https://cyngn.com/legal/privacy-policy
+  ro.cm.version=$(REPLICANT_VERSION) \
+  ro.modversion=$(REPLICANT_VERSION)
 
 -include vendor/cm-priv/keys/keys.mk
 
-CM_DISPLAY_VERSION := $(CM_VERSION)
+CM_VERSION := $(REPLICANT_VERSION)
+CM_DISPLAY_VERSION := $(REPLICANT_VERSION)
 
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
