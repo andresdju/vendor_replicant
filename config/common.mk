@@ -145,7 +145,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librsjni
 
-# Custom CM packages
+# Custom packages
 PRODUCT_PACKAGES += \
     Launcher3 \
     Trebuchet \
@@ -154,7 +154,6 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     Eleven \
     LockClock \
-    CyanogenSetupWizard \
     CMSettingsProvider \
     ExactCalculator
 
