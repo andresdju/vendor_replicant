@@ -71,8 +71,6 @@ endif
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
-# Allow ADB root access
-ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.root_access=3
 endif
 
 # Copy over the changelog to the device
@@ -222,12 +220,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_PACKAGES += \
     procmem \
-    procrank
-endif
-
-# Superuser
-PRODUCT_PACKAGES += \
+    procrank \
     su
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
