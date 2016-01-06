@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+BASEDIR=$(pwd)
+
+mkdir -p $BASEDIR/toolchain/clang
+cd $BASEDIR/toolchain/clang
+
+# build llvm and clang binaries
+cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86;ARM" \
+      -DLLVM_EXTERNAL_CLANG_SOURCE_DIR=../../external/clang \
+      -DCMAKE_C_FLAGS="-O2" ../../external/llvm/
+make -j $(nproc)
+
+cd $BASEDIR
