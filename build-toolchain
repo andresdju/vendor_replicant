@@ -13,3 +13,8 @@ cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_TARGETS_TO_BUILD="X86;ARM" \
 make -j $(nproc)
 
 cd $BASEDIR
+
+#TODO: copy include header (now in /usr/include)
+# include patch for binutils
+# enable optimization for llvm (more stuff?)
+# test with gcc-4.8 binaries if there are errors
