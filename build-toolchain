@@ -18,3 +18,6 @@ cd $BASEDIR
 # include patch for binutils
 # enable optimization for llvm (more stuff?)
 # test with gcc-4.8 binaries if there are errors
+# document renaming of binaries of cross compiler build and export flag
+# review other prebuilt tools from misc, tools, devtools and sdk
+# search for bin directories in external and remove binaries
