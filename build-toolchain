@@ -14,10 +14,124 @@ make -j $(nproc)
 
 cd $BASEDIR
 
-#TODO: copy include header (now in /usr/include)
-# include patch for binutils
-# enable optimization for llvm (more stuff?)
-# test with gcc-4.8 binaries if there are errors
-# document renaming of binaries of cross compiler build and export flag
+
+# build binutils for arm
+mkdir -p $BASEDIR/toolchain/gcc/arm/arm-linux-androideabi/build/binutils
+cd $BASEDIR/toolchain/gcc/arm/arm-linux-androideabi/build/binutils
+./../../../../../src/binutils/binutils-2.25/configure \
+	--prefix=$BASEDIR/toolchain/gcc/arm/arm-linux-androideabi/install \
+	--target=arm-linux-androideabi \
+	--enable-gold=default \
+        --enable-plugins
+
+make -j $(nproc) && make install
+
+# build gcc for arm
+cd .. && mkdir -p gcc && cd gcc
+./../../../../../src/gcc/gcc-4.9/configure \
+    --prefix=$BASEDIR/toolchain/gcc/arm/arm-linux-androideabi/install \
+    --target=arm-linux-androideabi \
+    --host=x86_64-linux-gnu \
+    --build=x86_64-linux-gnu \
+    --with-gnu-as \
+    --with-gnu-ld \
+    --enable-languages=c,c++ \
+    --enable-cloog-backend=isl \
+    --disable-libssp \
+    --enable-threads \
+    --disable-nls \
+    --disable-libmudflap \
+    --enable-libgomp \
+    --disable-libstdc__-v3 \
+    --disable-sjlj-exceptions \
+    --disable-shared \
+    --disable-tls \
+    --disable-libitm \
+    --with-float=soft \
+    --with-fpu=vfp \
+    --with-arch=armv5te \
+    --enable-target-optspace \
+    --enable-initfini-array \
+    --disable-bootstrap \
+    --disable-libquadmath \
+    --enable-plugins \
+    --with-sysroot=$BASEDIR/prebuilts/ndk/current/platforms/android-21/arch-arm \
+    --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
+    --enable-gnu-indirect-function \
+    --disable-libsanitizer \
+    --enable-graphite=yes \
+    --enable-eh-frame-hdr-for-static \
+    --enable-gold=default \
+    --program-transform-name='s&^&arm-linux-androideabi-&'
+
+make -j $(nproc) && make install
+
+
+# build binutils for host
+cd ../../../../ && mkdir -p host/build/binutils
+cd host/build/binutils
+./../../../../src/binutils/binutils-2.25/configure \
+    --prefix=$BASEDIR/toolchain/gcc/host/install \
+    --target=x86_64-linux \
+    --host=x86_64-linux-gnu \
+    --build=x86_64-linux-gnu \
+    --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
+    --with-gold-ldflags='-static-libgcc -static-libstdc++' \
+    --enable-gold=default \
+    --enable-plugins
+
+make -j $(nproc) && make install
+
+# build gcc for host
+cd .. && mkdir -p gcc && cd gcc
+./../../../../src/gcc/gcc-4.9/configure \
+    --prefix=$BASEDIR/toolchain/gcc/host/install \
+    --target=x86_64-linux \
+    --enable-multiarch \
+    --with-arch-32=i686 \
+    --with-abi=m64 \
+    --with-arch=x86-64 \
+    --with-multilib-list=m32,m64 \
+    --disable-nls \
+    --enable-target-optspace \
+    --host=x86_64-linux-gnu \
+    --build=x86_64-linux-gnu \
+    --disable-plugin \
+    --disable-docs \
+    --disable-bootstrap \
+    --disable-libgomp \
+    --disable-libmudflap \
+    --disable-libquadmath \
+    --disable-libsanitizer \
+    --enable-gold=default \
+    --enable-languages=c,c++
+
+make -j $(nproc) && make install
+
+# we need to link against the correct stdatomic.h
+cd ../../install/lib/gcc/x86_64-linux/4.9/include
+rm stdatomic.h
+ln -s ../../../../../../../../../bionic/libc/include/stdatomic.h stdatomic.h
+
+cd $BASEDIR
+
+# an empty Android.mk is needed (Android.mk in jack and jill repo should be ignored)
+touch toolchain/src/Android.mk
+
+# clang needs this header as a system header
+mkdir -p toolchain/headers/clang
+cd toolchain/headers/clang
+if [ ! -f stdatomic.h ]
+then
+    ln -s ../../../bionic/libc/include/stdatomic.h stdatomic.h
+fi
+
+cd $BASEDIR
+
+
+#TODO:
 # review other prebuilt tools from misc, tools, devtools and sdk
 # search for bin directories in external and remove binaries
+# build jack from source and rest of java toolchain (jack source has prebuilts, builds with ant dist)
+# add relocation_packer correctly as dependency
+# packages to install: gcc-arm-none-eabi

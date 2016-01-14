@@ -1,0 +1,47 @@
+From 2df3726ab2be5b0addc87e292d2b0fbdd28e66e8 Mon Sep 17 00:00:00 2001
+From: Wolfgang Wiedmeyer <wolfgit@wiedmeyer.de>
+Date: Thu, 14 Jan 2016 19:57:50 +0100
+Subject: [PATCH] math header: fix for clang toolchain
+
+Change-Id: Id617f610eb6aefdbc9903ded4149a296f5e87a03
+Signed-off-by: Wolfgang Wiedmeyer <wolfgit@wiedmeyer.de>
+---
+ 9/platforms/android-14/arch-arm/usr/include/math.h | 5 -----
+ 9/platforms/android-8/arch-arm/usr/include/math.h  | 5 -----
+ 2 files changed, 10 deletions(-)
+
+diff --git a/9/platforms/android-14/arch-arm/usr/include/math.h b/9/platforms/android-14/arch-arm/usr/include/math.h
+index 7fe24b9..4c773f3 100644
+--- a/9/platforms/android-14/arch-arm/usr/include/math.h
++++ b/9/platforms/android-14/arch-arm/usr/include/math.h
+@@ -528,11 +528,6 @@ double	__builtin_fma(double, double, double) __NDK_FPABI_MATH__;
+ double	__builtin_hypot(double, double) __NDK_FPABI_MATH__;
+ int	__builtin_ilogb(double) __NDK_FPABI_MATH__ __pure2;
+ /* int	__builtin_isinf(double) __NDK_FPABI_MATH__ __pure2; */
+-#if !defined(__clang__) || __clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 7)
+-int	__builtin_isnan(double) __NDK_FPABI_MATH__ __pure2;
+-#else
+-/* clang < 3.7 has faulty prototype for __builtin_isnan */
+-#endif
+ double	__builtin_lgamma(double) __NDK_FPABI_MATH__;
+ long long __builtin_llrint(double) __NDK_FPABI_MATH__;
+ long long __builtin_llround(double) __NDK_FPABI_MATH__;
+diff --git a/9/platforms/android-8/arch-arm/usr/include/math.h b/9/platforms/android-8/arch-arm/usr/include/math.h
+index 0706a1f..5be7d1c 100644
+--- a/9/platforms/android-8/arch-arm/usr/include/math.h
++++ b/9/platforms/android-8/arch-arm/usr/include/math.h
+@@ -523,11 +523,6 @@ double	__builtin_fma(double, double, double) __NDK_FPABI_MATH__;
+ double	__builtin_hypot(double, double) __NDK_FPABI_MATH__;
+ int	__builtin_ilogb(double) __NDK_FPABI_MATH__ __pure2;
+ /* int	__builtin_isinf(double) __NDK_FPABI_MATH__ __pure2; */
+-#if !defined(__clang__) || __clang_major__ > 3 || (__clang_major__ == 3 && __clang_minor__ >= 7)
+-int	__builtin_isnan(double) __NDK_FPABI_MATH__ __pure2;
+-#else
+-/* clang < 3.7 has faulty prototype for __builtin_isnan */
+-#endif
+ double	__builtin_lgamma(double) __NDK_FPABI_MATH__;
+ long long __builtin_llrint(double) __NDK_FPABI_MATH__;
+ long long __builtin_llround(double) __NDK_FPABI_MATH__;
+-- 
+2.1.4
+
