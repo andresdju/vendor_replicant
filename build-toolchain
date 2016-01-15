@@ -134,4 +134,7 @@ cd $BASEDIR
 # search for bin directories in external and remove binaries
 # build jack from source and rest of java toolchain (jack source has prebuilts, builds with ant dist)
 # add relocation_packer correctly as dependency
-# packages to install: gcc-arm-none-eabi
+
+# packages to install: gcc-arm-none-eabi, cmake, python-dev, swig, ant
+# apt-get build-dep gcc-4.9 binutils llvm-defaults
+# apply ndk patch
