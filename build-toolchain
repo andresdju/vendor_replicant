@@ -126,15 +126,37 @@ then
     ln -s ../../../bionic/libc/include/stdatomic.h stdatomic.h
 fi
 
+
+#############################
+# build jack/jill toolchain
+
+# first the simple lib
+cd ../../src/jack/simple
+mvn-debian clean package -Dmaven.test.skip=true
+cd ..
+
+# then jack
+ant clean dist
+
+# setup the jack/jill binary folder
+mkdir -p ../../jack_jill
+cp jack/etc/Android.mk.build ../../jack_jill/Android.mk
+cp dist/jack ../../jack_jill/
+chmod +x ../../jack_jill/jack
+cp dist/jack-admin ../../jack_jill/
+chmod +x ../../jack_jill/jack-admin
+cp dist/jack.jar ../../jack_jill/
+cp dist/jack-launcher.jar ../../jack_jill/
+
+# finally the jill.jar
+cd ../jill
+ant clean dist
+cp dist/jill.jar ../../jack_jill/
+
 cd $BASEDIR
 
 
 #TODO:
-# review other prebuilt tools from misc, tools, devtools and sdk
-# search for bin directories in external and remove binaries
-# build jack from source and rest of java toolchain (jack source has prebuilts, builds with ant dist)
-# add relocation_packer correctly as dependency
-
-# packages to install: gcc-arm-none-eabi, cmake, python-dev, swig, ant
-# apt-get build-dep gcc-4.9 binutils llvm-defaults
-# apply ndk patch
+# search for binaries in external and remove them
+# build manifest merger from source
+# jack source has prebuilts
