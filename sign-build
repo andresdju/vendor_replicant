@@ -26,6 +26,8 @@
 # both outputs should match
 # also /system/etc/security/otacerts.zip should only contain your release key
 
+set -e
+
 BASEDIR=$(pwd)
 KEY_DIR=$BASEDIR/vendor/replicant-security
 TARGET_FILES=$BASEDIR/out/target/product/*/obj/PACKAGING/target_files_intermediates/*-target_files-*.zip
