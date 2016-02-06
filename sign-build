@@ -1,0 +1,101 @@
+#!/bin/sh
+#
+# Copyright (C) 2016 Wolfgang Wiedmeyer <wolfgit@wiedmeyer.de>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# resigns your images with your keys and also generates keys for you
+# puts everything in out/dist
+# most information taken from here:
+# https://source.android.com/devices/tech/ota/sign_builds.html
+
+# final check if recovery has the right key:
+# java -jar out/host/linux-x86/framework/dumpkey.jar vendor/replicant-security/releasekey.x509.pem
+# in recovery: adb shell cat /res/keys
+# both outputs should match
+# also /system/etc/security/otacerts.zip should only contain your release key
+
+BASEDIR=$(pwd)
+KEY_DIR=$BASEDIR/vendor/replicant-security
+TARGET_FILES=$BASEDIR/out/target/product/*/obj/PACKAGING/target_files_intermediates/*-target_files-*.zip
+OUT_DIR=$BASEDIR/"out/dist"
+RELEASE=replicant-6.0
+
+generate_keys () {
+    # keys default values
+    KEY_C=AU
+    KEY_ST=Some-State
+    KEY_O="Internet Widgits Pty Ltd"
+
+    echo "No keys present. Generating them now."
+    echo
+    echo "You are about to be asked to enter information that will be incorporated"
+    echo "into your certificate requests."
+    echo "What you are about to enter is what is called a Distinguished Name or a DN."
+    echo "There are quite a few fields but you can leave some blank."
+    echo "For some fields there will be a default value."
+
+    read -p "Country Name (2 letter code) [AU]:" KEY_CN
+    read -p "State or Province Name (full name) [Some-State]:" KEY_ST
+    read -p "Locality Name (eg, city) []:" KEY_L
+    read -p "Organization Name (eg, company) [Internet Widgits Pty Ltd]:" KEY_O
+    read -p "Organizational Unit Name (eg, section) []:" KEY_OU
+    read -p "Common Name (e.g. your name) []:" KEY_CN
+    read -p "Email Address []:" KEY_EA
+
+    SUBJECT="/C=$KEY_C/ST=$KEY_ST/L=$KEY_L/O=$KEY_O/OU=$KEY_OU/CN=$KEY_CN \
+       /emailAddress=$KEY_EA"
+
+    mkdir $KEY_DIR
+    for x in releasekey platform shared media; do \
+        ./development/tools/make_key $KEY_DIR/$x "$SUBJECT"; \
+    done
+}
+
+
+if ! [ -d "$KEY_DIR" ]
+then
+    generate_keys
+fi
+
+if ! [ -f $TARGET_FILES ]
+then
+    echo "You need to build before you can sign: make -j $(nproc) bacon"
+    exit 1
+fi
+
+mkdir -p $OUT_DIR
+
+cp $TARGET_FILES $OUT_DIR/target_files_temp.zip
+# remove recovery.img to make sure that it gets rebuild with the new keys
+zip -d $OUT_DIR/target_files_temp.zip "BOOTABLE_IMAGES/recovery.img"
+
+# -o option replaces the test keys with the created ones
+python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
+       -e FDroid.apk=$KEY_DIR/platform \
+       -o \
+       -d $KEY_DIR $OUT_DIR/target_files_temp.zip \
+       $OUT_DIR/signed-target_files.zip
+
+python $BASEDIR/build/tools/releasetools/ota_from_target_files \
+       -k $KEY_DIR/releasekey \
+       $OUT_DIR/signed-target_files.zip \
+       $OUT_DIR/$RELEASE.zip
+
+python $BASEDIR/build/tools/releasetools/img_from_target_files \
+       $OUT_DIR/signed-target_files.zip \
+       $OUT_DIR/signed-img.zip
+
+# get the recovery from the signed-img.zip
+unzip -o -j $OUT_DIR/signed-img.zip  recovery.img -d $OUT_DIR
