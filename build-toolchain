@@ -156,19 +156,19 @@ cd ..
 ant clean dist
 
 # setup the jack/jill binary folder
-mkdir -p ../../jack_jill
 cp jack/etc/Android.mk.build ../../jack_jill/Android.mk
-cp dist/jack ../../jack_jill/
-chmod +x ../../jack_jill/jack
-cp dist/jack-admin ../../jack_jill/
-chmod +x ../../jack_jill/jack-admin
-cp dist/jack.jar ../../jack_jill/
-cp dist/jack-launcher.jar ../../jack_jill/
+cd ../../jack_jill
+cp build/jack/dist/jack .
+chmod +x jack
+cp build/jack/dist/jack-admin .
+chmod +x jack-admin
+cp build/jack/dist/jack.jar .
+cp build/jack/dist/jack-launcher.jar .
 
 # finally the jill.jar
-cd ../jill
+cd ../src/jill
 ant clean dist
-cp dist/jill.jar ../../jack_jill/
+cp ../../jack_jill/build/jill/dist/jill.jar ../../jack_jill/
 
 cd $BASEDIR
 
