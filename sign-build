@@ -79,15 +79,11 @@ fi
 
 mkdir -p $OUT_DIR
 
-cp $TARGET_FILES $OUT_DIR/target_files_temp.zip
-# remove recovery.img to make sure that it gets rebuild with the new keys
-zip -d $OUT_DIR/target_files_temp.zip "BOOTABLE_IMAGES/recovery.img"
-
 # -o option replaces the test keys with the created ones
 python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
        -e FDroid.apk=$KEY_DIR/platform \
        -o \
-       -d $KEY_DIR $OUT_DIR/target_files_temp.zip \
+       -d $KEY_DIR $TARGET_FILES \
        $OUT_DIR/signed-target_files.zip
 
 python $BASEDIR/build/tools/releasetools/ota_from_target_files \
