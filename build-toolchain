@@ -126,7 +126,7 @@ cd .. && mkdir -p gcc && cd gcc
 make -j $(nproc) && make install
 
 # we need to link against the correct stdatomic.h
-cd ../../install/lib/gcc/x86_64-linux/4.9/include
+cd ../../install/lib/gcc/x86_64-linux/4.9.x/include
 rm stdatomic.h
 ln -s ../../../../../../../../../bionic/libc/include/stdatomic.h stdatomic.h
 
