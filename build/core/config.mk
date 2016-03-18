@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CM_SRC_API_DIR := $(TOPDIR)prebuilts/cmsdk/api
-CM_SRC_SYSTEM_API_DIR := $(TOPDIR)prebuilts/cmsdk/system-api
+CM_SRC_API_DIR := $(TOPDIR)vendor/replicant/cmsdk/api
+CM_SRC_SYSTEM_API_DIR := $(TOPDIR)vendor/replicant/cmsdk/system-api
 INTERNAL_CM_PLATFORM_API_FILE := $(TARGET_OUT_COMMON_INTERMEDIATES)/PACKAGING/cm_public_api.txt
 INTERNAL_CM_PLATFORM_REMOVED_API_FILE := $(TARGET_OUT_COMMON_INTERMEDIATES)/PACKAGING/cm_removed.txt
 INTERNAL_CM_PLATFORM_SYSTEM_API_FILE := $(TARGET_OUT_COMMON_INTERMEDIATES)/PACKAGING/cm_system-api.txt
