@@ -95,8 +95,6 @@ cd host/build/binutils
     --host=x86_64-linux-gnu \
     --build=x86_64-linux-gnu \
     --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
-    --with-gold-ldflags='-static-libgcc -static-libstdc++' \
-    --enable-gold=default \
     --enable-plugins \
     --disable-ld
 
@@ -124,8 +122,8 @@ cd .. && mkdir -p gcc && cd gcc
     --disable-libmudflap \
     --disable-libquadmath \
     --disable-libsanitizer \
-    --enable-gold=default \
-    --enable-languages=c,c++
+    --enable-languages=c,c++ \
+    --with-ld=/usr/bin/x86_64-linux-gnu-ld.gold
 
 make -j $(nproc)
 make install
@@ -134,11 +132,12 @@ make install
 cd ../../install/lib/gcc/x86_64-linux/4.9.x/include
 rm stdatomic.h
 ln -s ../../../../../../../../../bionic/libc/include/stdatomic.h stdatomic.h
-# use gold ld from /usr because Google's binutils can't handle a recent libc
+# link ld from /usr
 cd ../../../../../x86_64-linux/bin/
-rm ld 
+rm -f ld ld.gold ld.bfd
 ln -s /usr/bin/x86_64-linux-gnu-ld.gold ld
-
+ln -s /usr/bin/x86_64-linux-gnu-ld.gold ld.gold
+ln -s /usr/bin/x86_64-linux-gnu-ld.bfd ld.bfd
 
 cd $BASEDIR
 
