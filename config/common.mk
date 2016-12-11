@@ -231,6 +231,8 @@ else
 BOARD_EGL_CFG := vendor/replicant/prebuilt/softwaregl/configs/egl.cfg
 
 PRODUCT_PROPERTY_OVERRIDES += ro.softwaregl=1
+# use Android's software renderer by default
+PRODUCT_PROPERTY_OVERRIDES += ro.libagl=1
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/softwaregl
 endif
