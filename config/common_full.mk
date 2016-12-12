@@ -1,15 +1,13 @@
 # Inherit common CM stuff
 $(call inherit-product, vendor/replicant/config/common.mk)
 
-# Include CM audio files
-include vendor/replicant/config/cm_audio.mk
+PRODUCT_SIZE := full
 
 ifeq ($(USE_OPENGL_RENDERER),true)
 PRODUCT_PACKAGES += \
     Galaxy4 \
     HoloSpiralWallpaper \
     LiveWallpapers \
-    LiveWallpapersPicker \
     MagicSmokeWallpapers
 endif
 
@@ -17,20 +15,8 @@ PRODUCT_PACKAGES += \
     NoiseField \
     PhaseBeam \
     PhotoTable \
-    SoundRecorder \
-    PhotoPhase \
-    Screencast
+    PhotoPhase
 
-# Extra tools in CM
+# Themes
 PRODUCT_PACKAGES += \
-    7z \
-    lib7z \
-    bash \
-    bzip2 \
-    curl \
-    powertop \
-    unrar \
-    unzip \
-    vim \
-    wget \
-    zip
+    HexoLibre

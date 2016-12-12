@@ -1,5 +1,5 @@
 # Themed resources (bootanimation)
-allow bootanim theme_data_file:dir search;
-allow bootanim theme_data_file:file r_file_perms;
+allow bootanim themeservice_app_data_file:dir search;
+allow bootanim themeservice_app_data_file:file r_file_perms;
 allow bootanim self:process execmem;
 allow bootanim ashmem_device:chr_file execute;
