@@ -83,7 +83,7 @@ PRODUCT_COPY_FILES += \
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/cm/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/replicant/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
@@ -125,7 +125,7 @@ PRODUCT_COPY_FILES += \
     vendor/replicant/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # Include CM audio files
-include vendor/cm/config/cm_audio.mk
+include vendor/replicant/config/cm_audio.mk
 
 # Theme engine
 include vendor/replicant/config/themes_common.mk
