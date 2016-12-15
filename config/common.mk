@@ -108,10 +108,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/replicant/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
-# Prebuilt apps
-PRODUCT_COPY_FILES +=  \
-    vendor/replicant/prebuilt/common/apps/FDroid.apk:system/app/FDroid.apk
-
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
@@ -168,7 +164,9 @@ PRODUCT_PACKAGES += \
     DataUsageProvider \
     WallpaperPicker \
     SoundRecorder \
-    Screencast
+    Screencast \
+    F-Droid \
+    FDroidPrivilegedExtension
 
 # Exchange support
 PRODUCT_PACKAGES += \

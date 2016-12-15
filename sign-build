@@ -81,7 +81,6 @@ mkdir -p $OUT_DIR
 
 # -o option replaces the test keys with the created ones
 python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
-       -e FDroid.apk=$KEY_DIR/platform \
        -o \
        -d $KEY_DIR $TARGET_FILES \
        $OUT_DIR/signed-target_files.zip
