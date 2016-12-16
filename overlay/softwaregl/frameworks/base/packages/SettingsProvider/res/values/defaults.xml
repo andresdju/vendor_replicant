@@ -19,4 +19,5 @@
 <resources>
     <fraction name="def_window_animation_scale">0%</fraction>
     <fraction name="def_window_transition_scale">0%</fraction>
+    <fraction name="def_animator_duration_scale">0%</fraction>
 </resources>
