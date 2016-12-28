@@ -194,7 +194,6 @@ PRODUCT_PACKAGES += \
     bzip2 \
     curl \
     powertop \
-    unrar \
     unzip \
     vim \
     wget \
