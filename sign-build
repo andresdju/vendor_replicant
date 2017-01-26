@@ -28,6 +28,7 @@
 
 set -e
 
+DEVICE=$1
 BASEDIR=$(pwd)
 KEY_DIR=$BASEDIR/vendor/replicant-security
 
@@ -38,7 +39,8 @@ else
     OUT_DIR=$OUT_DIR_COMMON_BASE/${PWD##*/}
 fi
 
-TARGET_FILES=$OUT_DIR/target/product/*/obj/PACKAGING/target_files_intermediates/*-target_files-*.zip
+TARGET_DIR=$OUT_DIR/target/product/$DEVICE
+TARGET_FILES=$TARGET_DIR/obj/PACKAGING/target_files_intermediates/*-target_files-*.zip
 DIST_OUT_DIR=$OUT_DIR/"dist"
 RELEASE=replicant-6.0
 
@@ -73,34 +75,54 @@ generate_keys () {
     done
 }
 
+if [ "$DEVICE" = "" ]
+then
+    echo "Usage: $0 [DEVICE]"
+    exit 1
+fi
+
+if ! [ -d "$TARGET_DIR" ]
+then
+    echo "The build directory for $DEVICE does not exist."
+    exit 1
+fi
+
+if ! [ -f $TARGET_FILES ]
+then
+    echo "No files to sign. Make sure the build for $DEVICE completed successfully."
+    exit 1
+fi
 
 if ! [ -d "$KEY_DIR" ]
 then
     generate_keys
 fi
 
-if ! [ -f $TARGET_FILES ]
-then
-    echo "You need to build before you can sign: make -j $(nproc) bacon"
-    exit 1
-fi
-
 mkdir -p $DIST_OUT_DIR
 
 # -o option replaces the test keys with the created ones
+# -p makes sure the script finds signapk.jar
 python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
        -o \
+       -p $OUT_DIR/host/linux-x86 \
        -d $KEY_DIR $TARGET_FILES \
-       $DIST_OUT_DIR/signed-target_files.zip
+       $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
 
 python $BASEDIR/build/tools/releasetools/ota_from_target_files \
        -k $KEY_DIR/releasekey \
-       $DIST_OUT_DIR/signed-target_files.zip \
-       $DIST_OUT_DIR/$RELEASE.zip
+       -p $OUT_DIR/host/linux-x86 \
+       $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
+       $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
 
 python $BASEDIR/build/tools/releasetools/img_from_target_files \
-       $DIST_OUT_DIR/signed-target_files.zip \
-       $DIST_OUT_DIR/signed-img.zip
+       $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
+       $DIST_OUT_DIR/signed-img-$DEVICE.zip
 
 # get the recovery from the signed-img.zip
-unzip -o -j $DIST_OUT_DIR/signed-img.zip  recovery.img -d $DIST_OUT_DIR
+unzip -o -j $DIST_OUT_DIR/signed-img-$DEVICE.zip  recovery.img -d $DIST_OUT_DIR
+mv $DIST_OUT_DIR/recovery.img $DIST_OUT_DIR/recovery-$DEVICE.img
+
+echo
+echo "Finished successfully. Install zip and recovery:"
+echo "$DIST_OUT_DIR/$RELEASE-$DEVICE.zip"
+echo "$DIST_OUT_DIR/recovery-$DEVICE.img"
