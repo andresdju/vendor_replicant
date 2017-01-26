@@ -1,0 +1,6 @@
+Firmware for Qualcomm Atheros AR9271 USB 802.11n NIC
+
+Source code: https://github.com/qca/open-ath9k-htc-firmware
+The firmware file htc_9271.fw was built from commit e997de58 on the
+master branch.
+See the above link for build instructions.

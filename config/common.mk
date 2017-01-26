@@ -120,6 +120,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/replicant/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
+# wifi firmware
+PRODUCT_COPY_FILES += \
+    vendor/replicant/prebuilt/common/etc/firmware/htc_9271.fw:system/etc/firmware/htc_9271.fw
+
 # Include CM audio files
 include vendor/replicant/config/cm_audio.mk
 
