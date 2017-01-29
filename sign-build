@@ -102,11 +102,20 @@ mkdir -p $DIST_OUT_DIR
 
 # -o option replaces the test keys with the created ones
 # -p makes sure the script finds signapk.jar
-python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
-       -o \
-       -p $OUT_DIR/host/linux-x86 \
-       -d $KEY_DIR $TARGET_FILES \
-       $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
+if [ "$DEVICE" = "i9100" ]
+then
+    python $BASEDIR/device/samsung/galaxys2-common/releasetools/galaxys2_sign_target_files_apks \
+	   -o \
+	   -p $OUT_DIR/host/linux-x86 \
+	   -d $KEY_DIR $TARGET_FILES \
+	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
+else
+    python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
+	   -o \
+	   -p $OUT_DIR/host/linux-x86 \
+	   -d $KEY_DIR $TARGET_FILES \
+	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
+fi
 
 python $BASEDIR/build/tools/releasetools/ota_from_target_files \
        -k $KEY_DIR/releasekey \
