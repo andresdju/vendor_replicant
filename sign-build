@@ -105,25 +105,35 @@ mkdir -p $DIST_OUT_DIR
 if [ "$DEVICE" = "i9100" ]
 then
     python $BASEDIR/device/samsung/galaxys2-common/releasetools/galaxys2_sign_target_files_apks \
+	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
 	   -o \
 	   -p $OUT_DIR/host/linux-x86 \
 	   -d $KEY_DIR $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
+
+    python $BASEDIR/build/tools/releasetools/ota_from_target_files \
+	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
+	   -k $KEY_DIR/releasekey \
+	   -p $OUT_DIR/host/linux-x86 \
+	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
+	   $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
+
 else
     python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
 	   -o \
 	   -p $OUT_DIR/host/linux-x86 \
 	   -d $KEY_DIR $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
+
+    python $BASEDIR/build/tools/releasetools/ota_from_target_files \
+	   -k $KEY_DIR/releasekey \
+	   -p $OUT_DIR/host/linux-x86 \
+	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
+	   $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
 fi
 
-python $BASEDIR/build/tools/releasetools/ota_from_target_files \
-       -k $KEY_DIR/releasekey \
-       -p $OUT_DIR/host/linux-x86 \
-       $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
-       $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
-
 python $BASEDIR/build/tools/releasetools/img_from_target_files \
+       -z \
        $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
        $DIST_OUT_DIR/signed-img-$DEVICE.zip
 
