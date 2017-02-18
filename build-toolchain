@@ -20,6 +20,9 @@ set -e
 
 BASEDIR=$(pwd)
 
+GOLD_LD=/usr/bin/ld.gold
+BFD_LD=/usr/bin/ld.bfd
+
 mkdir -p $BASEDIR/toolchain/clang
 cd $BASEDIR/toolchain/clang
 
@@ -123,7 +126,7 @@ cd .. && mkdir -p gcc && cd gcc
     --disable-libquadmath \
     --disable-libsanitizer \
     --enable-languages=c,c++ \
-    --with-ld=/usr/bin/x86_64-linux-gnu-ld.gold
+    --with-ld=$GOLD_LD
 
 make -j $(nproc)
 make install
@@ -135,9 +138,9 @@ ln -s ../../../../../../../../../bionic/libc/include/stdatomic.h stdatomic.h
 # link ld from /usr
 cd ../../../../../x86_64-linux/bin/
 rm -f ld ld.gold ld.bfd
-ln -s /usr/bin/x86_64-linux-gnu-ld.gold ld
-ln -s /usr/bin/x86_64-linux-gnu-ld.gold ld.gold
-ln -s /usr/bin/x86_64-linux-gnu-ld.bfd ld.bfd
+ln -s "$GOLD_LD" ld
+ln -s "$GOLD_LD" ld.gold
+ln -s "$BFD_LD" ld.bfd
 
 cd $BASEDIR
 
@@ -180,9 +183,3 @@ ant clean dist
 cp ../../jack_jill/build/jill/dist/jill.jar ../../jack_jill/
 
 cd $BASEDIR
-
-
-#TODO:
-# search for binaries in external and remove them
-# build manifest merger from source
-# jack source has prebuilts
