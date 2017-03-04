@@ -71,7 +71,7 @@ generate_keys () {
 
     mkdir $KEY_DIR
     for x in releasekey platform shared media; do \
-        ./development/tools/make_key $KEY_DIR/$x "$SUBJECT"; \
+        ./development/tools/make_key $KEY_DIR/$x "$SUBJECT" || true; \
     done
 }
 
