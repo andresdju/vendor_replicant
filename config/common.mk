@@ -163,7 +163,8 @@ PRODUCT_PACKAGES += \
     SoundRecorder \
     Screencast \
     F-Droid \
-    FDroidPrivilegedExtension
+    FDroidPrivilegedExtension \
+    RepWifi
 
 # Exchange support
 PRODUCT_PACKAGES += \
