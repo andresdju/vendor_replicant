@@ -9,8 +9,8 @@ a free software mobile operating system putting the emphasis on freedom and priv
 
 More information about Replicant is available at: http://www.replicant.us/about.php
 
-Website: http://www.replicant.us/
-Blog: http://blog.replicant.us/
+Website: http://www.replicant.us/  
+Blog: http://blog.replicant.us/  
 Wiki/tracker/forums: http://redmine.replicant.us/
 
 Copying
