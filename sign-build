@@ -41,7 +41,7 @@ fi
 
 TARGET_DIR=$OUT_DIR/target/product/$DEVICE
 TARGET_FILES=$TARGET_DIR/obj/PACKAGING/target_files_intermediates/*-target_files-*.zip
-DIST_OUT_DIR=$OUT_DIR/"dist"
+DIST_OUT_DIR=$OUT_DIR/"dist"/$DEVICE
 RELEASE=replicant-6.0
 
 generate_keys () {
