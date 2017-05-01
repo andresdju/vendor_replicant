@@ -6,7 +6,7 @@ PRODUCT_PACKAGES += \
     LatinIME
 
 # Include CM LatinIME dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/dictionaries
 
 ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
     PRODUCT_COPY_FILES += \
