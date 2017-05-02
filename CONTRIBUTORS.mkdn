@@ -1,7 +1,7 @@
 Replicant
 =========
 
-A non-exhaustive list of people involved in Replicant is available at: http://redmine.replicant.us/projects/replicant/wiki/People
+A non-exhaustive list of people involved in Replicant is available at: https://redmine.replicant.us/projects/replicant/wiki/People
 
 LineageOS
 ===========

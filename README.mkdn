@@ -7,11 +7,11 @@ About
 Replicant is a fully free Android distribution running on several devices,
 a free software mobile operating system putting the emphasis on freedom and privacy/security.
 
-More information about Replicant is available at: http://www.replicant.us/about.php
+More information about Replicant is available at: https://www.replicant.us/about.php
 
-Website: http://www.replicant.us/  
-Blog: http://blog.replicant.us/  
-Wiki/tracker/forums: http://redmine.replicant.us/
+Website: https://www.replicant.us/  
+Blog: https://blog.replicant.us/  
+Wiki/tracker/forums: https://redmine.replicant.us/
 
 Copying
 -------
