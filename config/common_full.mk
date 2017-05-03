@@ -8,15 +8,9 @@ PRODUCT_PACKAGES += \
     Galaxy4 \
     HoloSpiralWallpaper \
     LiveWallpapers \
-    MagicSmokeWallpapers
-endif
-
-PRODUCT_PACKAGES += \
+    MagicSmokeWallpapers \
     NoiseField \
     PhaseBeam \
     PhotoTable \
     PhotoPhase
-
-# Themes
-PRODUCT_PACKAGES += \
-    HexoLibre
+endif
