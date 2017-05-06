@@ -1,176 +1,81 @@
 Replicant
 =========
 
-### Replicant 4.2 0004 images
+### Replicant 6.0 0001 images
+
+Initial Replicant 6.0 release
 
 Common:
-* CVE-2015-1474 native framework security fix
-* CVE-2015-3842 av framework security fix
-* Installer Hijacking vulnerability fix
-* Stagefright vulnerability fix (including CVE-2015-3864)
-* Various other backported security fixes
-* Process thrash killing battery fix
-
-Galaxy S (I9000):
-* Mobile data activation fix
-
-### Replicant 4.2 0003 images
-
-Common:
-* CVE-2014-3153 Linux security fix
-* CVE-2014-3566 Apache-http security fix
-* CVE-2014-6041 Webkit security fix
-* CVE-2014-6271 Bash security fix
-* CVE-2014-6277 Bash security fix
-* CVE-2014-6278 Bash security fix
-* CVE-2014-7169 Bash security fix
-* CVE-2014-7186 Bash security fix
-* CVE-2014-7187 Bash security fix
-* Master Key security fix
-* Fake ID security fix
-* Preferred Network Offload privacy fix
-* CaCert Root CA and Class 3 CA
-* NFC firmware data load from a static file instead of a library
-* NFC power off only when initialization failed
-* Additional Wi-Fi MAC addresses for murata
-* Samsung-RIL and libsamsung-ipc rewrite: harder, better, probably not faster but definitely stronger
-
-Galaxy Note 2 (N7100):
-* Magnetic field sensor data interpretation correction
-
-GTA04:
-* Proper indications on boot failures
-* Lower earpiece playback volume
-* Installation script various fixes
-
-### Replicant 4.2 0002 images
-
-Common:
-* Better handling of missing NFC firmware
-* Replicant bootanimations with new typeface
-* Hide the homescreen search bar by default
-* Replicant-approved websites in the default bookmarks
-* Possibility to disable the search engine and DuckDuckGo for all!
-
-Galaxy S 2 (I9100), Galaxy Note (N7000):
-* Scale camera thumbnail before converting to jpeg, when necessary
-* Handle camera preview size changen, disable unsupported sizes and other fixes
-* Home key to select item in recovery
-* Accelerometer sensor enable fix
-
-Galaxy S (I9000):
-* Read and write modem data in proper buffer-sized chunks
-
-Galaxy Nexus (I9250):
-* Properly handle missing Ducati firmware
-
-Galaxy Tab 2 7.0 (P31xx):
-* Correct rotation for Wi-Fi-only version
-
-Galaxy Tab 2 10.1 (P51xx):
-* In-call audio routing fix (especially headphones microphone)
-
-Galaxy S 3 (I9300), Galaxy Note 2 (N7100):
-* Handle camera preview size or format change
-
-GTA04:
-* Initial Replicant 4.2 release
-* 2D graphics working
-* Audio working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth broken
-* GPS working
-
-### Replicant 4.2 0001 images
-
-Initial Replicant 4.2 release
-
-Nexus S (I902x):
-* 2D graphics working, slow
-* Sound working
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
-* Camera working
-
-Galaxy S (I9000):
-* 2D graphics working, slow
-* Sound working
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
-* Camera working
+* New RepWifi app for USB Wi-Fi adapter usage
+* Possibility to select llvmpipe as alternate software renderer
+* QR-Code scanning working
+* Possibility to access the camera from the lock screen
+* GCC, Binutils, Clang, Jack, Jill and other toolchain parts built from source
+* Removed dependencies on prebuilt tools
+* Build fixes for compatibility with Debian Stretch
+* Mirror LineageOS source code and use tags for all repos
+* New script to generate keys and sign images with your own keys
+* Possibility to set separate passwords for device encryption and lockscreen
+* Added F-Droid Privileged Extension
+* Disabled captive portal check that connects to a Google server
+* Hardened kernel configs
+* Updated heimdall
+* Several privacy enhancements for the browser (disabled preloading and tracking features)
+* Previews working in the gallery app
+* ADB not enabled by default
+* Replicant branding for recovery and DEX Optimizer
+* Added a new wallpaper
 
 Galaxy S 2 (I9100):
-* 2D graphics working, fast
+* 2D graphics working (fast)
 * Sound working, except Bluetooth and USB audio
 * Telephony working
 * Mobile data working
-* Wi-Fi not working without non-free firmwares
+* Internal Wi-Fi chip not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
 * Bluetooth not working without non-free firmwares
 * Sensors working
 * Camera working
-
-Galaxy Note (N7000):
-* 2D graphics working
-* Sound working, except Bluetooth and USB audio
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
-* Camera working
-
-Galaxy Nexus (I9250):
-* 2D graphics working
-* Sound working
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
-
-Galaxy Tab 2 7.0 (P31xx):
-* 2D graphics working, fast
-* Sound working
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
-
-Galaxy Tab 2 10.1 (P51xx):
-* 2D graphics working, slow
-* Sound working
-* Telephony working
-* Mobile data working
-* Wi-Fi not working without non-free firmwares
-* Bluetooth not working without non-free firmwares
-* Sensors working
+* Hardware media encoding/decoding not working without non-free firmwares
 
 Galaxy S 3 (I9300):
 * 2D graphics working
 * Sound working
 * Telephony working
 * Mobile data working
-* Wi-Fi not working without non-free firmwares
+* Internal Wi-Fi chip not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
 * Bluetooth not working without non-free firmwares
+* NFC working
 * Sensors working
-* Camera working (back)
+* Camera working (back camera)
+  front camera not working without non-free firmwares
+* Hardware media encoding/decoding not working without non-free firmwares
 
 Galaxy Note 2 (N7100):
 * 2D graphics working
 * Sound working
 * Telephony working
 * Mobile data working
-* Wi-Fi not working without non-free firmwares
+* Internal Wi-Fi chip not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
 * Bluetooth not working without non-free firmwares
+* NFC working
+* Sensors working (updated drivers for compatibility with more recent firmware)
+* Camera working (back camera)
+  front camera not working without non-free firmwares
+
+Galaxy S 3 4G (I9305):
+* 2D graphics working
+* Sound working
+* Internal Wi-Fi chip not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
+* Bluetooth not working without non-free firmwares
+* NFC working
 * Sensors working
-* Camera working (back)
+* Camera working (back camera)
+  front camera not working without non-free firmwares
+* Hardware media encoding/decoding not working without non-free firmwares
 
 LineageOS
 ===============
