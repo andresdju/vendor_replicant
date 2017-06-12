@@ -102,7 +102,7 @@ mkdir -p $DIST_OUT_DIR
 
 # -o option replaces the test keys with the created ones
 # -p makes sure the script finds signapk.jar
-if [ "$DEVICE" = "i9100" ]
+if [ "$DEVICE" = "i9100" ] || [ "$DEVICE" = "n7000" ]
 then
     python $BASEDIR/device/samsung/galaxys2-common/releasetools/galaxys2_sign_target_files_apks \
 	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
