@@ -1,5 +1,8 @@
 recovery_only(`
 
+# file system operations for sdcard
+permissive fsck_untrusted;
+
 # Secure adb (setup_adbd)
 allow adbd adb_keys_file:dir search;
 allow recovery adb_keys_file:dir r_dir_perms;
