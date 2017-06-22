@@ -26,19 +26,19 @@
         launcher:screen="1"
         launcher:x="0"
         launcher:y="0"
-        launcher:spanX="4"
+        launcher:spanX="6"
         launcher:spanY="2" />
 
     <favorite
             launcher:packageName="com.android.contacts"
             launcher:className="com.android.contacts.activities.PeopleActivity"
             launcher:screen="1"
-            launcher:x="1"
+            launcher:x="2"
             launcher:y="3" />
 
     <resolve
         launcher:screen="1"
-        launcher:x="2"
+        launcher:x="3"
         launcher:y="3" >
         <favorite
             launcher:packageName="org.fdroid.fdroid"
@@ -49,7 +49,7 @@
             launcher:packageName="fil.libre.repwifiapp"
             launcher:className="fil.libre.repwifiapp.activities.MainActivity"
             launcher:screen="1"
-            launcher:x="3"
+            launcher:x="4"
             launcher:y="3" />
 
 
@@ -61,20 +61,20 @@
         launcher:screen="2"
         launcher:x="0"
         launcher:y="0"
-        launcher:spanX="4"
+        launcher:spanX="6"
         launcher:spanY="2" />
 
     <favorite
         launcher:packageName="com.android.email"
         launcher:className="com.android.email.activity.Welcome"
         launcher:screen="2"
-        launcher:x="0"
-        launcher:y="3" />
+        launcher:x="1"
+        launcher:y="4" />
 
     <resolve
         launcher:screen="2"
-        launcher:x="1"
-        launcher:y="3" >
+        launcher:x="2"
+        launcher:y="4" >
         <favorite
             launcher:packageName="com.android.gallery"
             launcher:className="com.android.camera.GalleryPicker" />
@@ -84,22 +84,22 @@
         launcher:packageName="com.cyanogenmod.eleven"
         launcher:className="com.cyanogenmod.eleven.ui.activities.HomeActivity"
         launcher:screen="2"
-        launcher:x="2"
-        launcher:y="3" />
+        launcher:x="3"
+        launcher:y="4" />
 
     <favorite
         launcher:packageName="com.android.settings"
         launcher:className="com.android.settings.Settings"
         launcher:screen="2"
-        launcher:x="3"
-        launcher:y="3" />
+        launcher:x="4"
+        launcher:y="4" />
 
     <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
     <!-- Dialer, Messaging, [All Apps], Browser, Camera -->
     <resolve
         launcher:container="-101"
-        launcher:screen="0"
-        launcher:x="0"
+        launcher:screen="1"
+        launcher:x="1"
         launcher:y="0" >
         <favorite launcher:uri="#Intent;action=android.intent.action.DIAL;end" />
         <favorite launcher:uri="tel:123" />
@@ -115,8 +115,8 @@
 
     <resolve
         launcher:container="-101"
-        launcher:screen="1"
-        launcher:x="1"
+        launcher:screen="2"
+        launcher:x="2"
         launcher:y="0" >
         <favorite
             launcher:packageName="com.android.messaging"
@@ -128,8 +128,8 @@
 
     <resolve
         launcher:container="-101"
-        launcher:screen="3"
-        launcher:x="2"
+        launcher:screen="4"
+        launcher:x="4"
         launcher:y="0" >
         <favorite
             launcher:packageName="com.android.browser"
@@ -141,8 +141,8 @@
 
     <resolve
         launcher:container="-101"
-        launcher:screen="4"
-        launcher:x="4"
+        launcher:screen="5"
+        launcher:x="5"
         launcher:y="0" >
         <favorite
             launcher:packageName="com.android.camera"

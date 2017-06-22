@@ -26,7 +26,7 @@
         launcher:screen="1"
         launcher:x="0"
         launcher:y="0"
-        launcher:spanX="4"
+        launcher:spanX="5"
         launcher:spanY="2" />
 
     <favorite
@@ -61,7 +61,7 @@
         launcher:screen="2"
         launcher:x="0"
         launcher:y="0"
-        launcher:spanX="4"
+        launcher:spanX="5"
         launcher:spanY="2" />
 
     <favorite
@@ -69,12 +69,12 @@
         launcher:className="com.android.email.activity.Welcome"
         launcher:screen="2"
         launcher:x="0"
-        launcher:y="3" />
+        launcher:y="4" />
 
     <resolve
         launcher:screen="2"
         launcher:x="1"
-        launcher:y="3" >
+        launcher:y="4" >
         <favorite
             launcher:packageName="com.android.gallery"
             launcher:className="com.android.camera.GalleryPicker" />
@@ -84,15 +84,15 @@
         launcher:packageName="com.cyanogenmod.eleven"
         launcher:className="com.cyanogenmod.eleven.ui.activities.HomeActivity"
         launcher:screen="2"
-        launcher:x="2"
-        launcher:y="3" />
+        launcher:x="0"
+        launcher:y="4" />
 
     <favorite
         launcher:packageName="com.android.settings"
         launcher:className="com.android.settings.Settings"
         launcher:screen="2"
-        launcher:x="3"
-        launcher:y="3" />
+        launcher:x="4"
+        launcher:y="4" />
 
     <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
     <!-- Dialer, Messaging, [All Apps], Browser, Camera -->
