@@ -8,7 +8,7 @@ PRODUCT_PACKAGES += \
 # Include CM LatinIME dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/replicant/overlay/dictionaries
 
-ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
+ifeq ($(TARGET_BOOTANIMATION_NAME),)
     PRODUCT_COPY_FILES += \
         vendor/replicant/prebuilt/common/bootanimation/horizontal-1280x800.zip:system/media/bootanimation.zip
 endif
