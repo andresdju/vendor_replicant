@@ -1,6 +1,76 @@
 Replicant
 =========
 
+### Replicant 6.0 0002 images
+
+Common:
+* Support for USSD messages
+* Report network connections to apps that were established using a Wi-Fi adapter or reverse tethering
+* Updated RepWifi app (various new features and graphical restyling)
+* New Setup Wizard (based on the LineageOS Setup Wizard)
+* Merged latest changes from LineageOS 13.0 (mostly security fixes)
+* Updated F-Droid Privileged Extension
+* RepWifi included in the default workspace layout
+
+Recovery:
+* Increased button size for easier navigation
+* Backlight enabled for touch keys
+* Fixed bugs that prevented installations from internal or external storage
+
+Galaxy S 2 (I9100):
+* Fixed crash caused by the driver for the internal Wi-Fi
+
+Galaxy Note (N7000):
+* Initial Replicant 6.0 release
+* 2D graphics working
+* Sound working, except Bluetooth and USB audio
+* Telephony working
+* Mobile data working
+* Internal Wi-Fi not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
+* Bluetooth not working without non-free firmwares
+* Sensors working
+* Camera working
+* Hardware media encoding/decoding not working without non-free firmwares
+
+Galaxy Nexus (I9250):
+* Initial Replicant 6.0 release
+* 2D graphics working
+* Sound working
+* Telephony working
+* Mobile data working
+* Internal Wi-Fi not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
+* Bluetooth not working without non-free firmwares
+* Sensors working
+
+Galaxy Tab 2 7.0 (P31xx) and Galaxy Tab 2 10.1 (P51xx):
+* Initial Replicant 6.0 release
+* 2D graphics working
+* Sound working
+* Telephony working
+* Mobile data working
+* Wi-Fi not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
+* Bluetooth not working without non-free firmwares
+* Sensors working
+
+Galaxy S 3 4G (I9305):
+* /proc/last_kmsg support enabled
+
+Galaxy Note 8.0 (N5100 and N5110):
+* Initial Replicant release
+* 2D graphics working
+* Sound working
+* Telephony working
+* Mobile data working
+* Internal Wi-Fi chip not working without non-free firmwares
+  External Wi-Fi dongle with AR9271 chipset working
+* Bluetooth not working without non-free firmwares
+* Sensors working
+* Camera working
+* Hardware media encoding/decoding not working without non-free firmwares
+
 ### Replicant 6.0 0001 images
 
 Initial Replicant 6.0 release
