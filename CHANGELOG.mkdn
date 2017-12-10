@@ -1,6 +1,14 @@
 Replicant
 =========
 
+### Replicant 6.0 0003 images
+
+Common:
+* Critical fix for reboot loops that happened after updating certain apps
+* Merged latest changes from LineageOS 13.0 (mostly security fixes)
+* French translations for RepWifi
+* Updated F-Droid Privileged Extension
+
 ### Replicant 6.0 0002 images
 
 Common:
