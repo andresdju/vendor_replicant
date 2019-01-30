@@ -109,7 +109,8 @@ then
 	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
 	   -o \
 	   -p $OUT_DIR/host/linux-x86 \
-	   -d $KEY_DIR $TARGET_FILES \
+	   -d $KEY_DIR \
+	   $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
 
     echo "Signing target OTAs files ..."
@@ -125,7 +126,8 @@ else
     python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
 	   -o \
 	   -p $OUT_DIR/host/linux-x86 \
-	   -d $KEY_DIR $TARGET_FILES \
+	   -d $KEY_DIR \
+	   $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
 
     echo "Signing target OTAs files ..."
