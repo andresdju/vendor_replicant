@@ -44,11 +44,27 @@ TARGET_FILES=$TARGET_DIR/obj/PACKAGING/target_files_intermediates/*-target_files
 DIST_OUT_DIR=$OUT_DIR/"dist"/$DEVICE
 RELEASE=replicant-6.0
 
+read_var() {
+    local prompt="$1"
+    local var="$2"
+    # Store current value of variable as default.
+    eval "local default=\"\$$var\""
+
+    read -p "$prompt: [$default] " "$var"
+    # Set default value if empty.
+    eval "test -n \"\$$var\"" ||
+    eval "$var='$default'"
+}
+
 generate_keys () {
-    # keys default values
-    KEY_C=AU
-    KEY_ST=Some-State
-    KEY_O="Internet Widgits Pty Ltd"
+    local KEY_C="NA"
+    local KEY_ST="unknown"
+    local KEY_L="unknown"
+    local KEY_O="unknown"
+    local KEY_OU="unknown"
+    local KEY_CN="unknown"
+    local KEY_EA="unknown"
+    local SUBJECT
 
     echo "No keys present. Generating them now."
     echo
@@ -58,16 +74,14 @@ generate_keys () {
     echo "There are quite a few fields but you can leave some blank."
     echo "For some fields there will be a default value."
 
-    read -p "Country Name (2 letter code) [AU]:" KEY_CN
-    read -p "State or Province Name (full name) [Some-State]:" KEY_ST
-    read -p "Locality Name (eg, city) []:" KEY_L
-    read -p "Organization Name (eg, company) [Internet Widgits Pty Ltd]:" KEY_O
-    read -p "Organizational Unit Name (eg, section) []:" KEY_OU
-    read -p "Common Name (e.g. your name) []:" KEY_CN
-    read -p "Email Address []:" KEY_EA
-
-    SUBJECT="/C=$KEY_C/ST=$KEY_ST/L=$KEY_L/O=$KEY_O/OU=$KEY_OU/CN=$KEY_CN \
-       /emailAddress=$KEY_EA"
+    read_var "Country Name (2 letter code)" KEY_C
+    read_var "State or Province Name (full name)" KEY_ST
+    read_var "Locality Name (e.g. city)" KEY_L
+    read_var "Organization Name (e.g. company)" KEY_O
+    read_var "Organizational Unit Name (e.g. section)" KEY_OU
+    read_var "Common Name (e.g. your name)" KEY_CN
+    read_var "Email Address" KEY_EA
+    SUBJECT="/C=$KEY_C/ST=$KEY_ST/L=$KEY_L/O=$KEY_O/OU=$KEY_OU/CN=$KEY_CN/emailAddress=$KEY_EA"
 
     mkdir $KEY_DIR
     for x in releasekey platform shared media; do \
