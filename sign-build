@@ -104,6 +104,7 @@ mkdir -p $DIST_OUT_DIR
 # -p makes sure the script finds signapk.jar
 if [ "$DEVICE" = "i9100" ] || [ "$DEVICE" = "n7000" ]
 then
+    echo "Signing target APKs files ..."
     python $BASEDIR/device/samsung/galaxys2-common/releasetools/galaxys2_sign_target_files_apks \
 	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
 	   -o \
@@ -111,6 +112,7 @@ then
 	   -d $KEY_DIR $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
 
+    echo "Signing target OTAs files ..."
     python $BASEDIR/build/tools/releasetools/ota_from_target_files \
 	   -s device/samsung/galaxys2-common/releasetools/extensions/releasetools.py \
 	   -k $KEY_DIR/releasekey \
@@ -119,12 +121,14 @@ then
 	   $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
 
 else
+    echo "Signing target APKs files ..."
     python $BASEDIR/build/tools/releasetools/sign_target_files_apks \
 	   -o \
 	   -p $OUT_DIR/host/linux-x86 \
 	   -d $KEY_DIR $TARGET_FILES \
 	   $DIST_OUT_DIR/signed-target_files-$DEVICE.zip
 
+    echo "Signing target OTAs files ..."
     python $BASEDIR/build/tools/releasetools/ota_from_target_files \
 	   -k $KEY_DIR/releasekey \
 	   -p $OUT_DIR/host/linux-x86 \
@@ -132,6 +136,7 @@ else
 	   $DIST_OUT_DIR/$RELEASE-$DEVICE.zip
 fi
 
+echo "Signing target image files ..."
 python $BASEDIR/build/tools/releasetools/img_from_target_files \
        -z \
        $DIST_OUT_DIR/signed-target_files-$DEVICE.zip \
