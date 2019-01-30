@@ -83,10 +83,17 @@ generate_keys () {
     read_var "Email Address" KEY_EA
     SUBJECT="/C=$KEY_C/ST=$KEY_ST/L=$KEY_L/O=$KEY_O/OU=$KEY_OU/CN=$KEY_CN/emailAddress=$KEY_EA"
 
-    mkdir $KEY_DIR
-    for x in releasekey platform shared media; do \
-        ./development/tools/make_key $KEY_DIR/$x "$SUBJECT" || true; \
+    # Ensure that all keys and certificates are deleted in case of an error during creation,
+    # i.e. either all certificates are in place or none.
+    trap 'rm -rf "$KEY_DIR"' EXIT INT
+    mkdir "$KEY_DIR"
+    for x in releasekey platform shared media; do
+        ./development/tools/make_key "$KEY_DIR/$x" "$SUBJECT" || true
+        # The return value of 'make_key' cannot be trusted.  Check on our own
+        # if key and certificate has been created successfully.
+        test -r "$KEY_DIR/$x.x509.pem"
     done
+    trap - EXIT INT
 }
 
 if [ "$DEVICE" = "" ]
