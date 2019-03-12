@@ -45,13 +45,6 @@
             launcher:className="org.fdroid.fdroid.FDroid" />
     </resolve>
 
-    <favorite
-            launcher:packageName="fil.libre.repwifiapp"
-            launcher:className="fil.libre.repwifiapp.activities.MainActivity"
-            launcher:screen="1"
-            launcher:x="4"
-            launcher:y="3" />
-
 
     <!-- Screen [2] -->
 

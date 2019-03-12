@@ -135,8 +135,8 @@ PRODUCT_PACKAGES += \
     WallpaperPicker \
     SoundRecorder \
     Screencast \
-    F-Droid \
     FDroidPrivilegedExtension \
+    F-Droid \
     RepWifi
 
 # Exchange support
