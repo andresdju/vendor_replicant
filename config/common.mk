@@ -90,6 +90,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/replicant/prebuilt/common/etc/firmware/htc_9271.fw:system/etc/firmware/htc_9271.fw
 
+# Copy default EGL overrides
+PRODUCT_COPY_FILES += \
+    vendor/replicant/prebuilt/common/etc/libEGL_android:system/etc/libGLES_android \
+    vendor/replicant/prebuilt/common/etc/libEGL_mesa:system/etc/libGLES_mesa
+    
+
 # Include CM audio files
 include vendor/replicant/config/cm_audio.mk
 
