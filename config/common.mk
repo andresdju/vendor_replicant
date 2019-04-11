@@ -92,9 +92,7 @@ PRODUCT_COPY_FILES += \
 
 # Copy default EGL overrides
 PRODUCT_COPY_FILES += \
-    vendor/replicant/prebuilt/common/etc/libEGL_android:system/etc/libGLES_android \
-    vendor/replicant/prebuilt/common/etc/libEGL_mesa:system/etc/libGLES_mesa
-    
+    $(call find-copy-subdir-files,*,vendor/replicant/prebuilt/common/etc/libGLES_android,system/etc/libGLES_android)
 
 # Include CM audio files
 include vendor/replicant/config/cm_audio.mk
