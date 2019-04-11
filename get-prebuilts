@@ -9,12 +9,6 @@ mkdir -p $BASEDIR/prebuilt/common/apps/
 
 declare -a FDroidApps=(
 "fil.libre.repwifiapp_10")
-#"net.sourceforge.opencamera_69"
-#"org.mozilla.klar_22"
-#"org.smssecure.smssecure_208"
-#"com.termux_66"
-#"com.fsck.k9_26000"
-#"org.videolan.vlc_13001307")
 
 echo "Downloading FDroid..."
 curl -L -o $BASEDIR/prebuilt/common/apps/FDroid.apk -O -L https://f-droid.org/FDroid.apk
@@ -35,8 +29,4 @@ do
     echo ""
 done
 
-# Webview signed by Google
-
-echo "Downloading WebView..."
-curl -L -o $BASEDIR/prebuilt/common/apps/webview.apk -O -L https://luddit.es/android/replicant6experimental/com.google.android.webview.362610500.apk
 echo "DONE"
