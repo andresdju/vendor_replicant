@@ -22,17 +22,3 @@ LOCAL_MODULE_CLASS := APPS
 LOCAL_CERTIFICATE := PRESIGNED
 LOCAL_SRC_FILES := apps/fil.libre.repwifiapp_10.apk
 include $(BUILD_PREBUILT)
-
-#include $(CLEAR_VARS)
-#LOCAL_MODULE := OpenCamera
-#LOCAL_MODULE_CLASS := APPS
-#LOCAL_CERTIFICATE := PRESIGNED
-#LOCAL_SRC_FILES := apps/net.sourceforge.opencamera_69.apk
-#include $(BUILD_PREBUILT)
-
-#include $(CLEAR_VARS)
-#LOCAL_MODULE := WebView
-#LOCAL_MODULE_CLASS := APPS
-#LOCAL_CERTIFICATE := PRESIGNED
-#LOCAL_SRC_FILES := apps/webview.apk
-#include $(BUILD_PREBUILT)
